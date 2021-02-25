@@ -18,6 +18,10 @@ const addImgElement = () => {
     let ul = document.createElement('ul');
     ul.className = "img-list"
     ul.style.listStyleType = "none";
+    ul.style.display = "grid"
+    ul.style.gridTemplateColumns = "21vw 21vw 21vw 21vw"
+    ul.style.gridTemplateRows = "auto"
+
     imgContainer.appendChild(ul)
     
     // fetch images from api
@@ -27,8 +31,11 @@ const addImgElement = () => {
         // create li element and add images
         let li = document.createElement('li');
         let imgEl = document.createElement('img')
+        imgEl.style.width = "100%"
+        imgEl.style.height = "100%"
         imgEl.src = img
-        imgEl.style.width = "400px"
+        li.style.overflow = "hidden"
+        li.style.objectFit = "cover"
         li.append(imgEl)
         ul.appendChild(li)
     }))
@@ -47,9 +54,7 @@ const addBreeds = () => {
         for (breed in breedData.message) {
             let li = document.createElement('li');
         li.innerText = breed
-        // console.log(li)
         breedContainer.appendChild(li)
-        debugger 
         }
     })
 
