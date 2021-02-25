@@ -41,6 +41,7 @@ const addImgElement = () => {
     }))
 }
 
+
 // fetchs api for breeds and adds breed to ul
 const addBreeds = () => { 
 
@@ -56,11 +57,16 @@ const addBreeds = () => {
         li.innerText = breed
         breedContainer.appendChild(li)
         }
-    })
-
-    
     // using Object.keys
     // .then(breedData => console.log(Object.keys(breedData.message).forEach(breed))
     // )
+        for (let i = 0; i < breedContainer.children.length; i++) {
+            breedContainer.addEventListener("click", (j = breedContainer.children[i]) => { 
+                j.target.style.color = "red"
+            })   
+        }  
+
+    }) 
+    
 }
 
