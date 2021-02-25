@@ -21,8 +21,10 @@ const addImgElement = () => {
     imgContainer.appendChild(ul)
     
     // fetch images from api
-    fetch(imgUrl).then(res => res.json()).then(data => data.message.forEach((img) => {
-        // create li and adds image
+    fetch(imgUrl)
+        .then(res => res.json())
+        .then(imgData => imgData.message.forEach((img) => {
+        // create li element and add images
         let li = document.createElement('li');
         let imgEl = document.createElement('img')
         imgEl.src = img
@@ -32,6 +34,28 @@ const addImgElement = () => {
     }))
 }
 
-const addBreeds = () => {
+// fetchs api for breeds and adds breed to ul
+const addBreeds = () => { 
+
+    // grab dog breed ul
+    const breedContainer = document.getElementById("dog-breeds")
+
+    // fetches breed from api and appends created li to ul
+    fetch(breedUrl)
+    .then(res => res.json())
+    .then(breedData => {
+        for (breed in breedData.message) {
+            let li = document.createElement('li');
+        li.innerText = breed
+        // console.log(li)
+        breedContainer.appendChild(li)
+        debugger 
+        }
+    })
+
     
+    // using Object.keys
+    // .then(breedData => console.log(Object.keys(breedData.message).forEach(breed))
+    // )
 }
+
